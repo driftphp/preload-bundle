@@ -1,0 +1,64 @@
+version: 2
+jobs:
+  test-php72:
+    docker:
+      - image: circleci/php:7.2-cli
+
+    working_directory: ~/project
+    steps:
+      - checkout
+
+      - run:
+          name: Install PHPUnit
+          command: |
+            composer require phpunit/phpunit:7.5.17 --no-update
+
+      - run:
+          name: Run tests / Symfony 4^4
+          command: |
+            composer update -n --prefer-dist --prefer-lowest --no-suggest
+            rm -Rf var/*
+            php vendor/bin/phpunit --testsuite=base
+
+      - run:
+          name: Run tests / Symfony 5^0
+          command: |
+            composer update -n --prefer-dist --no-suggest
+            rm -Rf var/*
+            php vendor/bin/phpunit --testsuite=base
+
+      - run:
+          name: Run tests / No Stopwatch
+          command: |
+            composer require symfony/stopwatch:^5.0
+            composer update -n --prefer-dist --no-suggest
+            rm -Rf var/*
+            php vendor/bin/phpunit --testsuite=no-stopwatch
+
+
+  test-php74:
+    docker:
+      - image: circleci/php:7.4-cli
+
+    working_directory: ~/project
+    steps:
+      - checkout
+
+      - run:
+          name: Install PHPUnit
+          command: |
+            composer require phpunit/phpunit:7.5.17 --no-update
+
+      - run:
+          name: Run tests / Symfony 5^0
+          command: |
+            composer update -n --prefer-dist --no-suggest
+            rm -Rf var/*
+            php vendor/bin/phpunit --testsuite=base
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test-php72
+      - test-php74
