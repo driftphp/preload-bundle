@@ -2,14 +2,15 @@
 
 namespace Drift\Preload;
 
-use Drift\Preload\DependencyInjection\CompilerPass\PreLoadCompilerPass;
+use Drift\Preload\DependencyInjection\CompilerPass\PreloadNamespacesCompilerPass;
+use Drift\Preload\DependencyInjection\CompilerPass\PreloadServicesCompilerPass;
 use Drift\Preload\DependencyInjection\PreloadExtension;
 use Mmoreram\BaseBundle\BaseBundle;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 
 /**
- * Class PreloadBundle
+ * Class PreloadBundle.
  */
 class PreloadBundle extends BaseBundle
 {
@@ -21,7 +22,8 @@ class PreloadBundle extends BaseBundle
     public function getCompilerPasses(): array
     {
         return [
-            new PreLoadCompilerPass()
+            new PreloadServicesCompilerPass(),
+            new PreloadNamespacesCompilerPass(),
         ];
     }
 

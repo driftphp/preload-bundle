@@ -32,23 +32,24 @@ class PresetsFunctionalTest extends PreloadFunctionalTest
     protected static function decorateConfiguration(array $configuration): array
     {
         $configuration['preload'] = [
-            "presets" => [
-                '@symfony'
-            ]
+            'presets' => [
+                '@symfony',
+            ],
         ];
 
         return $configuration;
     }
 
     /**
-     * Test
+     * Test.
      */
     public function testServicesArePreloaded()
     {
         self::$kernel->preload();
         $collector = $this->get(PreloadServicesCollector::class);
+
         $this->assertEquals(
-            3,
+            5,
             $collector->count()
         );
 

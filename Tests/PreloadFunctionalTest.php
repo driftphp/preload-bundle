@@ -15,7 +15,6 @@ declare(strict_types=1);
 
 namespace Drift\Preload\Tests;
 
-use Drift\Preload\Event\PreloadServicesCollector;
 use Drift\Preload\PreloadBundle;
 use Mmoreram\BaseBundle\Kernel\DriftBaseKernel;
 use Mmoreram\BaseBundle\Tests\BaseFunctionalTest;
@@ -46,8 +45,8 @@ abstract class PreloadFunctionalTest extends BaseFunctionalTest
                     'autowire' => false,
                     'autoconfigure' => false,
                     'public' => true,
-                ]
-            ]
+                ],
+            ],
         ];
 
         return new DriftBaseKernel(

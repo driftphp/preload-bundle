@@ -1,14 +1,12 @@
 <?php
 
-
 namespace Drift\Preload\Exception;
 
 use Exception;
 
 /**
- * Class InvalidPresetException
+ * Class InvalidPresetException.
  */
 class InvalidPresetException extends Exception
 {
-
 }
