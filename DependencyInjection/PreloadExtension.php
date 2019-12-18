@@ -36,32 +36,6 @@ class PreloadExtension extends BaseExtension
     }
 
     /**
-     * Config files to load.
-     *
-     * Each array position can be a simple file name if must be loaded always,
-     * or an array, with the filename in the first position, and a boolean in
-     * the second one.
-     *
-     * As a parameter, this method receives all loaded configuration, to allow
-     * setting this boolean value from a configuration value.
-     *
-     * return array(
-     *      'file1.yml',
-     *      'file2.yml',
-     *      ['file3.yml', $config['my_boolean'],
-     *      ...
-     * );
-     *
-     * @param array $config Config definitions
-     *
-     * @return array Config files
-     */
-    protected function getConfigFiles(array $config): array
-    {
-        return [];
-    }
-
-    /**
      * Return a new Configuration instance.
      *
      * If object returned by this method is an instance of
@@ -96,6 +70,7 @@ class PreloadExtension extends BaseExtension
         return [
             'preload.services' => $config['services'],
             'preload.presets' => $config['presets'],
+            'preload.namespaces' => $config['namespaces'],
         ];
     }
 }
