@@ -16,7 +16,7 @@ declare(strict_types=1);
 namespace Drift\Preload\Event;
 
 use Drift\HttpKernel\Event\PreloadEvent;
-use React\Promise\FulfilledPromise;
+use function React\Promise\resolve;
 
 /**
  * Class PreloadServicesCollector.
@@ -50,7 +50,7 @@ class PreloadServicesCollector
      */
     public function preLoad(PreloadEvent $_)
     {
-        $promise = new FulfilledPromise();
+        $promise = resolve();
 
         foreach ($this->services as list($service, $methods)) {
             if (empty($methods)) {
