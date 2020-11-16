@@ -18,6 +18,7 @@ namespace Drift\Preload\Tests;
 use Drift\React;
 use React\EventLoop\LoopInterface;
 use React\Promise\FulfilledPromise;
+use function React\Promise\resolve;
 
 /**
  * Class AService.
@@ -59,7 +60,7 @@ class AService
      */
     public function asyncIncrease()
     {
-        return (new FulfilledPromise())
+        return resolve()
             ->then(function () {
                 return React\usleep(100000, $this->loop);
             })
