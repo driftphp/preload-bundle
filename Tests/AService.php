@@ -17,7 +17,6 @@ namespace Drift\Preload\Tests;
 
 use Drift\React;
 use React\EventLoop\LoopInterface;
-use React\Promise\FulfilledPromise;
 use function React\Promise\resolve;
 
 /**

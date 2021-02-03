@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Drift\Preload\Tests;
 
 use Drift\Preload\Event\PreloadServicesCollector;
+use React\EventLoop\Factory;
 
 /**
  * Class PresetsFunctionalTest.
@@ -45,6 +46,7 @@ class PresetsFunctionalTest extends PreloadFunctionalTest
      */
     public function testServicesArePreloaded()
     {
+        self::$kernel->getContainer()->set('reactphp.event_loop', Factory::create());
         self::$kernel->preload();
         $collector = $this->get(PreloadServicesCollector::class);
 
