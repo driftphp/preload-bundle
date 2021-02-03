@@ -15,8 +15,8 @@ declare(strict_types=1);
 
 namespace Drift\Preload\Tests;
 
-use Drift\Preload\Event\PreloadServicesCollector;
 use function Clue\React\Block\await;
+use Drift\Preload\Event\PreloadServicesCollector;
 use function Drift\React\sleep as async_sleep;
 use React\EventLoop\Factory;
 use React\EventLoop\LoopInterface;
